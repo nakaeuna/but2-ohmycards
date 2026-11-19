@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Données Personnelles - Oh My Cards{% endblock %}
+
+{% block body %}
+    <div class="container-principale">
+        <div class="texte-et-images">
+            <div class="texte-bienvenue">
+                <h1>Données Personnelles</h1>
+                <h2>
+                    Découvrez ici comment nous collectons, utilisons et protégeons vos informations personnelles.
+                </h2>
+            </div>
+        </div>
+
+        <div style="padding: 3% 0">
+            <div id="faqAccordion">
+                <!-- Collecte des données -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Collecte des données personnelles
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Nous collectons des informations personnelles lorsque vous interagissez avec notre site, par exemple lors de la création d'un compte, de la passation de commandes ou de l'inscription à notre newsletter. Ces informations peuvent inclure :
+                            <ul>
+                                <li>Nom et prénom</li>
+                                <li>Adresse email</li>
+                                <li>Adresse postale</li>
+                                <li>Numéro de téléphone</li>
+                                <li>Données de paiement (via un prestataire sécurisé)</li>
+                            </ul>
+                            Ces informations sont collectées de manière explicite et volontaire, et vous êtes informé de leur utilisation lors de leur collecte.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finalité du traitement des données -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Finalité du traitement des données
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Les données personnelles collectées sont utilisées pour les finalités suivantes :
+                            <ul>
+                                <li>Traitement de vos commandes et gestion de vos achats</li>
+                                <li>Envoi d'informations relatives à votre commande (factures, suivi d'expédition)</li>
+                                <li>Envoi de newsletters et offres commerciales (avec votre consentement préalable)</li>
+                                <li>Amélioration de l'expérience utilisateur sur notre site</li>
+                                <li>Gestion de votre compte client (inscription, récupération de mot de passe, etc.)</li>
+                            </ul>
+                            Nous nous engageons à ne pas utiliser vos données à d'autres fins sans votre consentement explicite.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Droit d'accès et de rectification -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Vos droits sur vos données personnelles
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Conformément à la législation en vigueur, vous disposez des droits suivants sur vos données personnelles :
+                            <ul>
+                                <li><strong>Droit d'accès :</strong> Vous pouvez demander l'accès à vos données personnelles que nous détenons.</li>
+                                <li><strong>Droit de rectification :</strong> Vous pouvez demander la correction de toute donnée personnelle inexacte ou incomplète.</li>
+                                <li><strong>Droit à l'effacement :</strong> Vous pouvez demander l'effacement de vos données personnelles dans certaines conditions.</li>
+                                <li><strong>Droit à la portabilité :</strong> Vous pouvez demander à recevoir vos données personnelles sous un format structuré et couramment utilisé.</li>
+                                <li><strong>Droit d'opposition :</strong> Vous pouvez vous opposer à l'utilisation de vos données personnelles à des fins de marketing direct.</li>
+                                <li><strong>Droit à la limitation du traitement :</strong> Vous pouvez demander la limitation du traitement de vos données personnelles dans certaines situations.</li>
+                            </ul>
+                            Pour exercer vos droits, vous pouvez nous contacter directement via notre page <a href="{{ path('app_contact') }}">Contact</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conservation des données -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Conservation des données
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Vos données personnelles seront conservées pendant la durée nécessaire à la gestion de votre commande et à la relation commerciale. Les données liées à votre commande peuvent être conservées pour une période de 5 ans à compter de la clôture de votre commande, conformément aux exigences fiscales et comptables.
+                            <br><br>
+                            Pour les abonnés à notre newsletter, les données seront conservées tant que vous ne vous désabonnez pas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sécurité des données -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Sécurité des données
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Nous mettons en œuvre des mesures techniques et organisationnelles pour garantir la sécurité de vos données personnelles, notamment la protection contre la perte, l'accès non autorisé ou la divulgation. Cependant, aucune méthode de transmission ou de stockage électronique n'est totalement sécurisée, et nous ne pouvons garantir une sécurité absolue.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookies -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Cookies
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Ce site utilise des cookies pour améliorer votre expérience de navigation et pour réaliser des statistiques de visites. Vous pouvez gérer vos préférences de cookies en modifiant les paramètres de votre navigateur.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

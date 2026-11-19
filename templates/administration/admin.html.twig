@@ -1,0 +1,12 @@
+
+{% import _self as easyadmin_field %}
+
+{% block easyadmin_field_field_row %}
+    {% if form.vars.value is not empty %}
+        {% include '@EasyAdmin/crud/field.html.twig' with { 'form': form } only %}
+    {% else %}
+        <div class="empty-field">-</div>
+    {% endif %}
+{% endblock %}
+
+{{ easyadmin_field.field(field, value, form) }}

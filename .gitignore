@@ -1,0 +1,30 @@
+###> symfony/framework-bundle ###
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+!/.env.example
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> secrets ###
+config/secrets/*/*.decrypt.private.php
+###< secrets ###
+
+###> frontend ###
+/node_modules/
+/public/build/
+###< frontend ###
+
+###> IDE & OS ###
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

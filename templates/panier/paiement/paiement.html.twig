@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include 'panier/header.html.twig' %}
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Section Authentification -->
+            <div class="col-md-9 pointillés">
+                <div>
+                    <h4 class="mb-4 texte-et-images">Paiement</h4>
+                    <h6 class="mb-4 texte-et-images">Toutes les transactions sont sécurisées et chiffrées.</h6>
+                    <div class="mb-4 paiement">
+                        <label class="envoyer" style="margin-left: 2%">
+                            <a class="blanc" href="{{ path('app_panier_paiement', {'type': 'Paypal'}) }}">Paypal</a>
+                        </label>
+                        <label class="envoyer" style="margin-left: 2%">
+                            <a class="blanc" href="{{ path('app_panier_paiement', {'type': 'CB'}) }}">CB</a>
+                        </label>
+                        <label class="envoyer" style="margin-left: 2%">
+                            <a class="blanc" href="{{ path('app_panier_paiement', {'type': 'Faux'}) }}">Autre</a>
+                        </label>
+                    </div>
+                    <div class="mb-4 form-row">
+                        {{ form_start(form ) }}
+                        <button type="submit" class="btn payer" style="margin: 1% 0 3% 0">Payer</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Colonne Droite (Logo et Récapitulatif) -->
+            <div class="col-md-3 d-flex flex-column gap-3">
+                <!-- Section Logo -->
+                <div class="p-4 pointillés text-center">
+                    <img src="{{ asset('assets/images/logo/ohMyCards.png') }}"
+                         alt="Oh My Cards"
+                         class="img-fluid"
+                         style="max-height: 150px; object-fit: contain;">
+                </div>
+
+                <!-- Section Récapitulatif -->
+                <div class="p-4 pointillés">
+                    <h4 class="mb-3">Récapitulatif</h4>
+                    <h6>Sous-total ( {{ nbProduits }} )
+                        : {{ produits|reduce((carry, item) => carry + item.prix, 0) * 0.8 }}€</h6>
+                    <p class="fs-5">Total (TVA incluse) : {{ produits|reduce((carry, item) => carry + item.prix, 0) }}
+                        €</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include 'panier/header.html.twig' %}
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Section Authentification -->
+            <div class="col-md-9 pointillés">
+                <div class="p-4 form-row">
+                    <h4 class="mb-4 texte-et-images">Veuillez préciser votre adresse de livraison puis appuyer sur Continuer.</h4>
+                    {{ form_start(form) }}
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.numeroRue) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.nomRue) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.ville) }}
+                    </div><div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.region) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.codePost) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.pays) }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Colonne Droite (Livraison et Récapitulatif) -->
+            <div class="col-md-3 d-flex flex-column gap-3">
+                <!-- Section Livraison -->
+                <div class="p-4 pointillés text-center">
+                    <label>
+                        <input type="radio" name="_" value="standard"> Livraison Standard
+                    </label>
+                    <h6 class="text-center">5€</h6>
+                    <label>
+                        <input type="radio" name="_" value="express"> Livraison Express
+                    </label>
+                    <h6 class="text-center">12€</h6>
+                </div>
+
+                <!-- Section Récapitulatif -->
+                <div class="p-4 pointillés">
+                    <h4 class="mb-3">Récapitulatif</h4>
+                    <h6>Sous-total ( {{ nbProduits }} ) : {{ produits|reduce((carry, item) => carry + item.prix, 0) * 0.8}}€</h6>
+                    <p class="fs-5">Total (TVA incluse) : {{ produits|reduce((carry, item) => carry + item.prix, 0) }}€</p>
+                    <button type="submit" class="btn btn-primary w-100 envoyer">Continuer</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

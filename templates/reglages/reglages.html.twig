@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Oh My Cards{% endblock %}
+
+{% block body %}
+    <div class="container-principale">
+        <div class="texte-et-images">
+            <div class="texte-bienvenue">
+                <h1>Réglages</h1>
+                <h2>
+                    Gérez vos préférences de compte, confidentialité, adresses et commandes en un seul endroit !
+                </h2>
+            </div>
+        </div>
+
+        <div style="padding: 0 0 2% 0">
+            <div id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Compte
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <div class="form-row">
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                <button type="submit" class="btn btn-danger">Valider</button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Confidentialité
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <h5>
+                                Votre sécurité est notre priorité absolue. Nous avons mis en place des protocoles de
+                                sécurité avancés pour garantir la protection de vos données personnelles et de vos
+                                transactions en ligne. Toutes les informations sensibles sont cryptées avec des
+                                technologies de sécurité de pointe, et nous nous engageons à respecter les normes les
+                                plus strictes en matière de confidentialité et de sécurité des données. Vous pouvez
+                                naviguer, effectuer des achats et gérer vos informations en toute confiance, sachant que
+                                votre sécurité est constamment assurée sur notre plateforme.
+                            </h5>
+                            <h6>
+                                Si vous souhaitez supprimer vos données personnelles, consulter vos données dans le
+                                cadre des lois en vigueur avec le RGPD ou si vous avez une quelconque autre
+                                requête, n'hésitez pas à nous contacter via la page <a href="{{ path('app_contact') }}">Contact</a>.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Adresse
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <div class="form-row">
+                                {{ form_start(form2) }}
+                                {{ form_widget(form2) }}
+                                <button type="submit" class="btn btn-danger">Valider</button>
+                                {{ form_end(form2) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Commandes
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {% for commande in commandes %}
+                                <h4 style="text-decoration: underline">Commande numéro {{ commande.id }}</h4>
+                                <h6>Commande effectuée le : {{ commande.dateAchat.format('d/m/Y') }} <br></h6>
+                                <h6>Livraison prévue le : {{ commande.dateArrive.format('d/m/Y') }} <br></h6>
+                                <h6>Prix total : {{ commande.prixTotal }}€</h6>
+                                <hr>
+                                <br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

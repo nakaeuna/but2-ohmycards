@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include 'panier/header.html.twig' %}
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Section Panier -->
+            <div class="col-md-9 pointillés">
+                <div class="row mb-3 fw-bold border-bottom pb-2">
+                    <div class="col-md-6">Produit</div>
+                    <div class="col-md-2">Prix unitaire</div>
+                    <div class="col-md-2">Quantité</div>
+                    <div class="col-md-2">Prix total</div>
+                </div>
+
+                {% for produitPanier in produits %}
+                    {% set produit = produitPanier.produit %}
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-6">
+                        {{ produit.nom }}
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-theme="dark"
+                             data-bs-ride="carousel"
+                             style="max-width: 200px; margin: auto;">
+                            <div class="carousel-indicators">
+                                {% for image in produit.images %}
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                            data-bs-slide-to="{{ loop.index0 }}"
+                                            {% if loop.index0 == 0 %} class="active" aria-current="true"{% endif %}
+                                            aria-label="Slide {{ loop.index0+1 }}"></button>
+                                {% endfor %}
+                            </div>
+                            <div class="carousel-inner" style="width: 200px; height: 200px">
+                                {% for image in produit.images %}
+                                    <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}">
+                                        <img src="{{ vich_uploader_asset(image, 'fichier') }}"
+                                             class="d-block w-100"
+                                             alt="{{ produit.nom }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">{{ produit.prix }}</div>
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <form action="{{ path('app_panier_moins') }}" method="post">
+                                    <input type="hidden" name="id_produit" value="{{ produit.id }}">
+                                    <button type="submit" class="btn btn-danger w-100">-</button>
+                                </form>
+                            </div>
+                            <div class="col-md-3 text-center ">
+                                {{ produitPanier.quantite }}
+                            </div>
+                            <div class="col-md-3">
+                                <form action="{{ path('app_panier_plus') }}" method="post">
+                                    <input type="hidden" name="id_produit" value="{{ produit.id }}">
+                                    <button type="submit" class="btn btn-danger w-100">+</button>
+                                </form>
+                            </div>
+                            <div class="col-md-3">
+                                <form action="{{ path('app_produits_supprimer') }}" method="post">
+                                    <input type="hidden" name="id_produit" value="{{ produit.id }}">
+                                    <input type="submit" value="X" class="btn btn-danger w-100">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">{{ produitPanier.prix }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Section Colonne Droite (Actions et Promotion) -->
+            <div class="col-md-3 d-flex flex-column gap-3">
+                <!-- Section Actions -->
+                <div class="p-4 pointillés">
+                    <h4>Récapitulatif</h4>
+                    <h6>Sous-total ( {{ nbProduits }} ) : {{ produits|reduce((carry, item) => carry + item.prix, 0) * 0.8}}€</h6>
+                    <p class="fs-5">Total (TVA incluse) : {{ produits|reduce((carry, item) => carry + item.prix, 0) }}€</p>
+                    <a href="{{ path('app_panier_auth') }}" class="btn btn-primary w-100 envoyer">Continuer</a>
+                </div>
+
+                <!-- Section Promotion -->
+                <div class="p-4 pointillés">
+                    <h4>Réduction</h4>
+                    <h6>Ajouter un code promo</h6>
+                    <form method="post">
+                        <div class="mb-3">
+                            <input type="text" name="promo_code" class="form-control" placeholder="Code promo">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 envoyer">Appliquer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

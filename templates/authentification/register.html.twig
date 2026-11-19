@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container-principale">
+        <div class="texte-et-images">
+            <div class="texte-bienvenue">
+                <h1>Inscription</h1>
+                <h2>Rejoignez-nous et découvrez notre collection de cartes uniques !</h2>
+            </div>
+        </div>
+
+        <div style="padding: 2% 0 0 0">
+            {{ form_start(registrationForm) }}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    <p>Vous êtes connecté en tant que {{ app.user.userIdentifier }} : <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a></p>
+                </div>
+            {% endif %}
+
+            <div class="form-row">
+                <div class="form-row custom-form-row">
+                    {{ form_row(registrationForm.nom, { label: 'Nom' }) }}
+                </div>
+                <div class="form-row custom-form-row">
+                    {{ form_row(registrationForm.prenom, { label: 'Prénom' }) }}
+                </div>
+                <div class="form-row custom-form-row">
+                    {{ form_row(registrationForm.email, { label: 'E-mail' }) }}
+                </div>
+                <div class="form-row custom-form-row">
+                    {{ form_row(registrationForm.numTel, { label: 'Numéro de téléphone' }) }}
+                </div>
+                <div class="form-row custom-form-row">
+                    {{ form_row(registrationForm.plainPassword, { label: 'Mot de passe' }) }}
+                </div>
+                <div class="form-row custom-form-row">
+                    {{ form_row(registrationForm.agreeTerms, { label: 'Veuillez accepter nos conditions'} )}}
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container" style="padding: 2% 0;">
+            <button type="submit" class="btn-découvrir" style="padding: 0 4%;">S'inscrire</button>
+            {{ form_end(registrationForm) }}
+            <a href="{{ path('app_login') }}" style="padding: 0 4%;"><button class="btn-découvrir">Se connecter</button></a>
+        </div>
+    </div>
+{% endblock %}

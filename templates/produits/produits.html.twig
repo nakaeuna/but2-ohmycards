@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Filtres -->
+            <div class="col-md-3 d-flex">
+                <div class="filter-box">
+                    {{ form_start(form) }}
+                    <h5 class="filter-title">Filtres</h5>
+
+                    <!-- Theme -->
+                    <h5 class="mt-4">Thème</h5>
+                    <div class="filter-tags">
+                        {% for choice in form.theme %}
+                            <input type="radio" id="{{ choice.vars.id }}" name="{{ choice.vars.full_name }}"
+                                   value="{{ choice.vars.value }}" class="btn-check" onclick="this.form.submit();"
+                                   {% if choice.vars.checked %}checked{% endif %} required>
+                            <label for="{{ choice.vars.id }}"
+                                   class="btn btn-outline-dark btn-sm tag">{{ choice.vars.label }}</label>
+                        {% endfor %}
+                    </div>
+                    <div id="divCheckbox" style="visibility: hidden; display: none;">
+                        {{ form_row(form.theme) }}
+                    </div>
+
+
+                    <!-- Catégorie -->
+                    <h5 class="mt-4">Type de produit</h5>
+                    <div class="filter-tags">
+                        {% for choice in form.categorie %}
+                            <input type="radio" id="{{ choice.vars.id }}" name="{{ choice.vars.full_name }}"
+                                   value="{{ choice.vars.value }}" class="btn-check" onclick="this.form.submit();"
+                                   {% if choice.vars.checked %}checked{% endif %} required>
+                            <label for="{{ choice.vars.id }}"
+                                   class="btn btn-outline-dark btn-sm tag">{{ choice.vars.label }}</label>
+                        {% endfor %}
+                    </div>
+                    <div id="divCheckbox" style="visibility: hidden; display: none;">
+                        {{ form_widget(form.categorie) }}
+                    </div>
+
+                    <!-- Prix -->
+                    <h5 class="mt-4">Prix</h5>
+                    <div class="d-flex align-items-center" style="gap:5%;">
+                        <div>
+                            <h6>Min (€)</h6>
+                            {{ form_row(form.prixMin) }}
+                        </div>
+                        <div>
+                            <h6>Max (€)</h6>
+                            {{ form_row(form.prixMax) }}
+                        </div>
+
+                        <button class="btn btn-outline-dark btn-sm" style="visibility: hidden; display: none;"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produits -->
+            <div class="col-md-9">
+                <div class="d-flex justify-content-between align-items-center mb-4 pointillés">
+                    <div>
+                        {{ form_row(form.nom) }}
+                    </div>
+                    <span style="flex-shrink: 0">{{ produits.getTotalItemCount() }} produits</span>
+                    <div>
+                        <button class="sort-dropdown dropdown-toggle" style="font-size:20px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Trier par
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item">{{ knp_pagination_sortable(produits, 'Nom', 'p.nom') }}</li>
+                            <li class="dropdown-item">{{ knp_pagination_sortable(produits, 'Prix', 'prixFinal') }}</li>
+                            <li class="dropdown-item">{{ knp_pagination_sortable(produits, 'Ventes', 'p.nbVente') }}</li>
+                            <li class="dropdown-item">{{ knp_pagination_sortable(produits, 'Promo', 'promo.pourcentageReduction') }}</li>
+                            <li class="dropdown-item">{{ knp_pagination_sortable(produits, 'Avis', 'p.MoyenneNote') }}</li>
+                        </ul>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+
+                <!-- Liste des produits -->
+                <div class="row pointillés test">
+
+                    {% for produit in produits %}
+                        <div class="col-md-4 mb-4">
+                            <a href="{{ path('app_produit', {'id': produit.0.id}) }}">
+                                <div class="product-card">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-theme="dark"
+                                         data-bs-ride="carousel"
+                                         style="max-width: 200px; margin: auto;">
+                                        <div class="carousel-indicators">
+                                            {% for image in produit.0.images %}
+                                                <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                        data-bs-slide-to="{{ loop.index0 }}"
+                                                        {% if loop.index0 == 0 %} class="active" aria-current="true"{% endif %}
+                                                        aria-label="Slide {{ loop.index0+1 }}"></button>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="carousel-inner" style="width: 200px; height: 200px">
+                                            {% for image in produit.0.images %}
+                                                <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}">
+                                                    <img src="{{ vich_uploader_asset(image, 'fichier') }}"
+                                                         class="d-block w-100"
+                                                         alt="{{ produit.0.nom }}">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <p>{{ produit.0.nom }}</p>
+                                    <h6>Thème {{ produit.0.theme.value }} - {{ produit.0.moyenneNote|number_format(1) }}/5 ⭐</h6>
+                                    {% if produit.0.prixTTC|number_format(2, ',', '') != produit.prixFinal|number_format(2, ',', '') %}
+                                        <span><s>{{ produit.0.prixTTC|number_format(2, ',', '') }} €</s> | {{ produit.prixFinal|number_format(2, ',', '') }} €</span>
+                                        <span></span>
+                                    {% else %}
+                                        <span>{{ produit.prixFinal|number_format(2, ',', '') }} €</span>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+                    <div class="pagination-box">
+                        {{ knp_pagination_render(produits) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

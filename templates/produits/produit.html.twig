@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row">
+            <!-- Détails du produit -->
+            <div class="col-md-6">
+                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in produit.images %}
+                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <img src="{{ vich_uploader_asset(image, 'fichier') }}" class="d-block w-100 rounded" alt="{{ produit.nom }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Informations sur le produit -->
+            <div class="col-md-6">
+                <h1 class="mb-3">{{ produit.nom }}</h1>
+                <h3 class="text-success">
+                    {% if produit.prixTTC|number_format(2, ',', '') != produit.prix|number_format(2, ',', '') %}
+                        <span><s>{{ produit.prixTTC|number_format(2, ',', '') }} €</s> | {{ produit.prix|number_format(2, ',', '') }} €</span>
+                        <span></span>
+                    {% else %}
+                        <span>{{ produit.prix|number_format(2, ',', '') }} €</span>
+                    {% endif %}</h3>
+                <p class="mt-4">{{ produit.description }}</p>
+                <div class="d-flex align-items-center mb-4">
+                    <span class="me-2">Note moyenne :</span>
+                    <span class="text-warning">
+                    {{ produit.moyenneNote|default(0)|number_format(1) }} ⭐
+                </span>
+                </div>
+
+                <form action="{{ path('app_produits_ajouteraupanier') }}" method="post">
+                    <input type="hidden" name="id_produit" value="{{ produit.id }}">
+                    <div class="mb-3">
+                        <label for="quantite" class="form-label">Quantité</label>
+                        <input type="number" id="quantite" name="quantite" value="1" class="form-control w-25" min="1">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Ajouter au panier</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Section des avis -->
+        <div class="mt-5">
+            <h2>Avis des utilisateurs</h2>
+            {% if is_granted("ROLE_USER") %}
+                {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_row(form.note, {'attr': {'class': 'form-control w-25'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(form.avis, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Publier</button>
+                {{ form_end(form) }}
+            {% endif %}
+
+            <div class="mt-4">
+                {% for avis_unique in produit.avis %}
+                    <div class="border rounded p-3 mb-3">
+                        <strong>De :</strong> {{ avis_unique.utilisateur }}<br>
+                        <strong>Note :</strong> {{ avis_unique.note }}/5<br>
+                        <strong>Commentaire :</strong> {{ avis_unique.avis }}
+                    </div>
+                {% else %}
+                    <p>Aucun avis pour ce produit.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

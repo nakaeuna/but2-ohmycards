@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include 'panier/header.html.twig' %}
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Section Authentification -->
+            <div class="col-md-9 pointillés">
+                <div class="p-4 auth">
+                    <a href="{{ path('app_login') }}"><button class="envoyer">Se connecter</button></a>
+                    <a href="{{ path('app_register') }}"><button class="envoyer">S'inscrire</button></a>
+                </div>
+                <hr>
+                <div class="p-4 form-row">
+                    <h4 class="mb-4 texte-et-images">Continuer la transaction en tant qu'invité</h4>
+                    <h6 class="mb-4 texte-et-images">Veuillez remplir les champs puis appuyer sur Continuer.</h6>
+                    {{ form_start(form) }}
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.nom, { 'label': 'Nom' }) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.prenom, { 'label': 'Prénom' }) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.email, { 'label': 'E-mail' }) }}
+                    </div>
+                    <div class="mb-3 form-row custom-form-row">
+                        {{ form_row(form.numTel, { 'label': 'Numéro de téléphone' }) }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Colonne Droite (Logo et Récapitulatif) -->
+            <div class="col-md-3 d-flex flex-column gap-3">
+                <!-- Section Logo -->
+                <div class="p-4 pointillés text-center">
+                    <img src="{{ asset('assets/images/logo/ohMyCards.png') }}"
+                         alt="Oh My Cards"
+                         class="img-fluid"
+                         style="max-height: 150px; object-fit: contain;">
+                </div>
+
+                <!-- Section Récapitulatif -->
+                <div class="p-4 pointillés">
+                    <h4 class="mb-3">Récapitulatif</h4>
+                    <h6>Sous-total ( {{ nbProduits }} ) : {{ produits|reduce((carry, item) => carry + item.prix, 0) * 0.8}}€</h6>
+                    <p class="fs-5">Total (TVA incluse) : {{ produits|reduce((carry, item) => carry + item.prix, 0) }}€</p>
+                    <button type="submit" class="btn btn-primary w-100 envoyer">Continuer</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

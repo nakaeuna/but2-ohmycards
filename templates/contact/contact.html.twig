@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5 écart">
+        <h1 class="text-center mb-4">Contact</h1>
+        <p class="text-center texteExplication">
+            Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ? Nous vous répondrons du lundi au
+            vendredi de 10h à 19h. Vous pouvez aussi nous contacter grâce à nos coordonnées ci-dessous. Nous réglerons
+            votre problème dans les plus brefs délais.
+        </p>
+
+        <div class="row mt-5 d-flex align-items-stretch">
+            <div class="col-md-6 mb-4 d-flex flex-column">
+                <iframe class="w-100 rounded"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1139.2616961819588!2d-1.544572747695964!3d47.22370623289809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805f03e0b932da7%3A0xda6ed724fef282a3!2sIUT%20de%20Nantes%20-%20Campus%20de%20Nantes!5e0!3m2!1sfr!2sfr!4v1736515034978!5m2!1sfr!2sfr"
+                        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="p-3 mt-3 pointillés">
+                    <p><i class="bi bi-geo-alt-fill"></i> 3 Rue Maréchal Joffre, 44000 Nantes</p><br>
+                    <p><i class="bi bi-envelope-fill"></i> contact@ohmycards.fr</p><br>
+                    <p><i class="bi bi-telephone-fill"></i> (+33) 2 40 30 60 90</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex flex-column" style="margin: 0 0 24px 0">
+                <form class="p-4 pointillés h-100">
+                    <div class="mb-3">
+                        <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="nom" id="nom" class="form-control" placeholder="Nom" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="message" id="message" class="form-control" rows="5" placeholder="Message"
+                                  required></textarea>
+                    </div>
+                    <div class="text-center mt-auto">
+                        <button type="submit" class="btn btn-danger w-100 envoyer btn-envoi">Envoyer le message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% block body %}
+    <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Barre de progression -->
+            <ul class="progressbar list-unstyled d-flex w-100 justify-content-around">
+                <li class="step {{ app.request.attributes.get('_route') == 'app_panier_index' ? 'active' : '' }}">
+                    <a href="{{ path('app_panier_index') }}" class="text-decoration-none text-dark">
+                        <span class="step-number">1</span> Panier
+                    </a>
+                </li>
+                <li class="step {{ app.request.attributes.get('_route') == 'app_panier_auth' ? 'active' : '' }}">
+                    <a href="{{ path('app_panier_auth') }}" class="text-decoration-none text-dark">
+                        <span class="step-number">2</span> Authentification
+                    </a>
+                </li>
+                <li class="step {{ app.request.attributes.get('_route') == 'app_panier_livraison' ? 'active' : '' }}">
+                    <a href="{{ path('app_panier_livraison') }}" class="text-decoration-none text-dark">
+                        <span class="step-number">3</span> Livraison
+                    </a>
+                </li>
+                <li class="step {{ app.request.attributes.get('_route') == 'app_panier_paiement' ? 'active' : '' }}">
+                    <a href="{{ path('app_panier_paiementsanstype') }}" class="text-decoration-none text-dark">
+                        <span class="step-number">4</span> Paiement
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <div class="container-principale">
+        <div class="texte-et-images">
+            <div class="texte-bienvenue">
+                <h1>Connexion</h1>
+                <h2>Connectez-vous pour accéder à votre compte !</h2>
+            </div>
+        </div>
+
+        <div style="padding: 2% 0 0 0">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger custom-alert">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        <p>Vous êtes connecté en tant que {{ app.user.userIdentifier }} : <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a></p>
+                    </div>
+                {% endif %}
+
+                <div class="form-row custom-form-row">
+                    <label for="username">Email</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                </div>
+
+                <div class="form-row custom-form-row">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="form-row custom-form-row">
+                    <div class="checkbox mb-3" style="display: flex; flex-direction: row; align-content: center;">
+                        <label for="_remember_me" style="width: 30%; align-content: center;">Se souvenir de moi</label>
+                        <input type="checkbox" name="_remember_me" id="_remember_me">
+                    </div>
+                </div>
+
+                <div class="btn-container" style="padding: 2% 0;">
+                    <button class="btn-découvrir" type="submit" style="padding: 1% 2%; margin: 0 2%;">Se connecter</button>
+                    <a href="{{ path('app_register') }}" class="btn-découvrir" style="padding: 1% 2%; margin: 0 2%">S'inscrire</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

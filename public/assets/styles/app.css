@@ -1,0 +1,601 @@
+/*Header*/
+body {
+    font: 20px sans-serif;
+}
+
+#navbar .nav-link {
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#navbar .navbar-brand img {
+    max-width: 60%;
+    height: auto;
+}
+
+#navbar input.form-control {
+    max-width: 250px;
+}
+
+header .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header .btn img {
+    max-height: 15px;
+}
+
+#navbar {
+    background: linear-gradient(to right, #ffffff, #df2c0f);
+    display: flex;
+}
+
+.container {
+    max-width: 80%;
+}
+
+/*Footer*/
+
+footer {
+    background: linear-gradient(to right, #ffffff, #df2c0f);
+    padding: 40px 20px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0
+    ;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 80%;
+    gap: 13%;
+}
+
+.footer-logo-social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo img {
+    max-width: 250px;
+}
+
+.footer-social a img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.footer-info {
+    max-width: 250px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-info h6 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.footer-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-info ul li {
+    margin-bottom: 8px;
+}
+
+.footer-info ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-newsletter {
+    max-width: 250px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-newsletter h6 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.footer-newsletter form {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;;
+}
+
+.footer-newsletter input {
+    padding:    10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    flex: 1;
+    max-width: 250px;
+}
+
+.footer-newsletter button {
+    padding: 10px;
+    background-color: #df2c0f;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-newsletter form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-newsletter input,
+    .footer-newsletter button {
+        max-width: 100%;
+        border-radius: 4px;
+    }
+}
+
+/*Page Accueil*/
+
+.container-principale {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+.texte-et-images {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.texte-bienvenue {
+    flex: 1 1 50%;
+    max-width: 50%;
+    text-align: left;
+}
+
+.texte-bienvenue h1 {
+    font-size: 3rem;
+    font-family: "Irish Grover", serif;
+}
+
+.texte-bienvenue h2 {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.images-section {
+    flex: 1 2 50%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image-homme {
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+}
+
+.image-bulle {
+    width: auto;
+    height: 250px;
+    margin-left: -10%;
+}
+
+/*Relatif au carousel*/
+
+.container-pointillés {
+    border: 2px dashed black;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+
+.carousel .carousel-inner img {
+    border-radius: 10px;
+    padding: 2% 6% 4% 6%;
+}
+
+/*Relatif au bouton découvrir*/
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-découvrir {
+    padding: 20px 50px;
+    font-size: 25px;
+    background: linear-gradient(to right, #ffffff, #df2c0f);
+    color: white;
+    border:1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Page Produits */
+
+.filter-box {
+    border: 2px dashed black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.filter-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    width: 100%;
+    padding: 5px 0 5px 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 15px
+}
+
+.btn-classique { background: linear-gradient(to right, #ffffff, #df2c0f);}
+.btn-hello-kitty { background: linear-gradient(to right, #ffffff, #f659ad);}
+.btn-yu-gi-oh { background: linear-gradient(to right, #ffffff, #0f43df);}
+.btn-pokemon { background: linear-gradient(to right, #ffffff, #FEE135);}
+
+.pointillés {
+    border: 2px dashed black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.écart {
+    gap : 20px;
+}
+
+.test {
+    margin: 0 0;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.product-img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.pagination-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tag {
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.sort-dropdown {
+    background: linear-gradient(to right, #ffffff, #df2c0f);
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Page Contact */
+
+.texteExplication {
+    padding: 0 10%;
+}
+
+.envoyer {
+    background: linear-gradient(to right, #ffffff, #df2c0f);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    border:1px solid black;
+}
+
+.btn-envoi {
+    max-width: 60%;
+}
+
+.texteContact {
+    line-height:10px;
+}
+
+/* Style des pages à cliquer dans le footer */
+
+#faqAccordion .accordion-button {
+    background-color: #fff; /* Fond blanc */
+    color: #333; /* Texte gris foncé */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 16px; /* Police plus petite et classique */
+    font-weight: normal; /* Pas de gras sur le titre */
+    padding: 15px; /* Espacement autour du texte */
+}
+
+#faqAccordion .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa; /* Légère couleur de fond pour l'élément ouvert */
+    color: #df2c0f; /* Couleur du texte quand l'accordion est ouvert */
+    border-color: #ddd; /* Bordure quand l'accordion est ouvert */
+}
+
+#faqAccordion .accordion-body {
+    padding: 20px; /* Espacement confortable autour du texte */
+    font-size: 14px; /* Police plus petite pour le contenu */
+    color: #555; /* Texte gris clair */
+}
+
+#faqAccordion .accordion-item {
+    margin-bottom: 10px; /* Espacement entre les items */
+}
+
+#faqAccordion .accordion-button:focus {
+    box-shadow: none; /* Pas d'ombre autour des boutons quand ils sont sélectionnés */
+    border-color: #ccc; /* Bordure classique quand sélectionné */
+}
+
+/* Page Inscription */
+.texte-bienvenue h1 {
+    font-size: 3rem;
+    font-family: "Irish Grover", serif;
+    color: #df2c0f;
+}
+
+.texte-bienvenue h2 {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-row input, .form-row select, .form-row textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #df2c0f;
+}
+
+.custom-form-row {
+    margin-bottom: 20px; /* Espacement entre chaque ligne de formulaire */
+    padding: 10px; /* Ajoute un peu de padding autour de chaque ligne */
+    border-radius: 8px; /* Arrondir les coins */
+    background-color: #f9f9f9; /* Fond légèrement gris pour chaque ligne */
+}
+
+.custom-form-row label {
+    font-weight: bold; /* Mettre en gras le texte des labels */
+    color: #333; /* Couleur du texte des labels */
+}
+
+.custom-form-row input, .custom-form-row select, .custom-form-row textarea {
+    width: 100%; /* S'assurer que les champs de saisie prennent toute la largeur */
+    padding: 10px; /* Ajouter du padding à l'intérieur des champs de saisie */
+    border: 1px solid #ccc; /* Bordure claire pour les champs */
+    border-radius: 4px; /* Coins arrondis des champs */
+    font-size: 14px; /* Taille de police des champs */
+}
+
+.custom-form-row input:focus, .custom-form-row select:focus, .custom-form-row textarea:focus {
+    border-color: #df2c0f; /* Couleur de la bordure quand un champ est sélectionné */
+    outline: none; /* Supprimer l'outline par défaut */
+}
+
+/* Page Panier */
+
+.progressbar {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.step {
+    position: relative;
+    text-align: center;
+    flex: 1;
+}
+
+.step a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: inherit;
+}
+
+.step-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.step.active .step-number {
+    border-color: #df2c0f;
+    background-color: #df2c0f;
+    color: #fff;
+}
+
+.step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    z-index: -1;
+}
+
+.step.active:not(:last-child)::after {
+    background-color: #df2c0f;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #df2c0f;
+}
+.carousel-inner img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.row.align-items-center:hover {
+    background-color: #f1f1f1;
+}
+
+.col-md-3 .bg-light {
+    border: 1px solid #ddd;
+}
+
+.auth {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.auth a {
+    margin: 0 10%;
+}
+
+.paiement {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    color:white;
+}
+
+.blanc {
+    color: white;
+}
+
+.payer {
+    border: 1px solid black;
+    border-radius: 40px;
+}
+
+/* Styles pour la page Réglages */
+
+.container-regle {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.texte-et-images {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.texte-bienvenue h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.col-md-1 div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.col-md-1 a {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.col-md-1 a:hover {
+    background-color: #df2c0f;
+    color: #fff;
+}
+
+.col-md-5 {
+    flex: 4;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+    min-height: 400px;
+}
+
+.pointillés {
+    font-size: 16px;
+    color: #666;
+}
+
+.regle {
+    background-color: #fdfdfd;
+}
+
